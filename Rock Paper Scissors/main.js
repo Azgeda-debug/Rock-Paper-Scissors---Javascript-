@@ -18,7 +18,7 @@ const setGame = () =>
 {
     computerScores.innerHTML = 0;
     playerScores.innerHTML = 0;
-    turn.innerHTML = 'Your turn. Select your weapon :)';
+    turn.innerHTML = 'Your turn. Choose your weapon :)';
     playerChoiceDisplay.innerHTML = '';
     computerChoiceDisplay.innerHTML = '';
 }
@@ -81,7 +81,7 @@ const generateComputerChoice = (e) =>
     setTimeout(() => 
     {
         options.forEach(option => option.classList.remove('active'));
-        turn.innerHTML = 'Your turn. Select your weapon :)';
+        turn.innerHTML = 'Your turn. Choose your weapon :)';
         resetGame.classList.remove('inactive');
     }, 1000);
     getResult();
