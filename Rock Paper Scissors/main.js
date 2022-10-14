@@ -5,6 +5,7 @@ const result = document.querySelector('.game-result');
 const computerScores = document.querySelector('.computer-scores');
 const playerScores = document.querySelector('.player-scores');
 const turn = document.querySelector('.turn');
+const resetGame = document.querySelector('.reset-game-button');
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -18,6 +19,8 @@ const setGame = () =>
     computerScores.innerHTML = 0;
     playerScores.innerHTML = 0;
     turn.innerHTML = 'Your turn. Select your weapon :)';
+    playerChoiceDisplay.innerHTML = '';
+    computerChoiceDisplay.innerHTML = '';
 }
 
 window.onload = setGame();
@@ -30,6 +33,7 @@ options.forEach(btn => btn.addEventListener('click', (e) =>
     options.forEach(option => option.classList.remove('active'));
     e.target.classList.add('active');
     
+    resetGame.classList.add('inactive');
     options.forEach(option => option.classList.add('inactive'));
     setTimeout(() => 
     {
@@ -78,12 +82,14 @@ const generateComputerChoice = (e) =>
     {
         options.forEach(option => option.classList.remove('active'));
         turn.innerHTML = 'Your turn. Select your weapon :)';
+        resetGame.classList.remove('inactive');
     }, 1000);
     getResult();
 }
 
 const getResult = () =>
 {
+    result.classList.remove('active');
     switch(playerChoice + computerChoice)
     {
         case 'rockscissors':
@@ -109,4 +115,12 @@ const getResult = () =>
         result.style.background = 'gray';
         break;
     }
+    resetGame.classList.add('active');
 }
+
+resetGame.addEventListener('click', () =>
+{
+    result.classList.add('active');
+    resetGame.classList.remove('active');
+    setGame();
+});

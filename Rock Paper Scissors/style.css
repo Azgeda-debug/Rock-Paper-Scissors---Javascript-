@@ -14,6 +14,7 @@ body
     flex-direction: column;
     gap: 20px;
     align-items: center;
+    user-select: none;
 }
 
 /* Game Styling */
@@ -72,7 +73,7 @@ body
     transform: scale(1.2);
 }
 
-.game button.inactive
+.game button.inactive, .reset-game-button.inactive
 {
     pointer-events: none;
 }
@@ -97,4 +98,35 @@ body
     text-align: center;
     color: white;
     font-weight: bold;
+}
+
+.game-result.active
+{
+    display: none;
+}
+
+.reset-game-button
+{
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 5px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: .3s ease-in-out;
+    display: none;
+}
+
+.reset-game-button.active
+{
+    display: block;
+}
+
+.reset-game-button:hover
+{
+    background: rgba(0, 0, 0, 0.7);
+    letter-spacing: 1px;
 }
