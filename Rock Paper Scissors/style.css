@@ -22,9 +22,8 @@ body
 .scores
 {
     display: flex;
-    align-items: center;
-    justify-content: center;
     margin-top: 20px;
+    margin-left: 40px;
 }
 
 .computer-name, .player-name
@@ -34,6 +33,11 @@ body
     padding: 5px 12px;
     border-radius: 8px;
     font-size: 22px;
+}
+
+.player-name
+{
+    background-color: #11c57a;
 }
 
 .computer-scores, .player-scores
@@ -48,9 +52,45 @@ body
     padding-right: 50px;
 }
 
-.player-name
+.game-scores
 {
-    background-color: #11c57a;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.give-player-point, .give-computer-point
+{
+    position: absolute;
+    top: -20%;
+    right: 20%;
+    font-size: 24px;
+    font-weight: bold;
+    display: none;
+}
+
+.give-computer-point
+{
+    right: 36%;
+}
+
+.give-player-point.active, .give-computer-point.active
+{
+    display: block;
+    animation: ShowPoint 1s;
+}
+
+@keyframes ShowPoint
+{
+    0%
+    {
+        opacity: 80%;
+    }
+    100%
+    {
+        opacity: 0%;
+        transform: translateY(-100%);
+    }
 }
 
 .turn
@@ -82,6 +122,7 @@ body
 {
     pointer-events: none;
     width: 200px;
+    border-radius: 20px;
 }
 
 .computer-choice, .player-choice
@@ -129,4 +170,47 @@ body
 {
     background: rgba(0, 0, 0, 0.7);
     letter-spacing: 1px;
+}
+
+@media only screen and (max-width:760px)
+{
+    .game-image
+    {
+        width: 120px;
+    }
+
+    .game-result
+    {
+        padding: 5px 10px;
+        font-size: 24px;
+    }
+
+    .computer-choice, .player-choice
+    {
+        font-size: 20px;
+    }
+
+    .reset-game-button
+    {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width:500px)
+{
+    .game-image
+    {
+        width: 80px;
+    }
+
+    h2
+    {
+        font-size: 20px;
+    }
+
+    .computer-name, .player-name
+    {
+        padding: 4px 8px;
+        font-size: 18px;
+    }
 }

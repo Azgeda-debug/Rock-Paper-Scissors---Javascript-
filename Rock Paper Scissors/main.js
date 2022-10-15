@@ -6,6 +6,8 @@ const computerScores = document.querySelector('.computer-scores');
 const playerScores = document.querySelector('.player-scores');
 const turn = document.querySelector('.turn');
 const resetGame = document.querySelector('.reset-game-button');
+const givePlayerPoint = document.querySelector('.give-player-point');
+const giveComputerPoint = document.querySelector('.give-computer-point');
 
 const choices = ['rock', 'paper', 'scissors'];
 
@@ -21,6 +23,8 @@ const setGame = () =>
     turn.innerHTML = 'Your turn. Choose your weapon :)';
     playerChoiceDisplay.innerHTML = '';
     computerChoiceDisplay.innerHTML = '';
+    playerPoints = 0;
+    computerPoints = 0;
 }
 
 window.onload = setGame();
@@ -87,6 +91,26 @@ const generateComputerChoice = (e) =>
     getResult();
 }
 
+const givePointToPlayer = () =>
+{
+    givePlayerPoint.classList.add('active');
+
+    setTimeout(() =>
+    {
+        givePlayerPoint.classList.remove('active');
+    }, 900);
+}
+
+const givePointToComputer = () =>
+{
+    giveComputerPoint.classList.add('active');
+
+    setTimeout(() =>
+    {
+        giveComputerPoint.classList.remove('active');
+    }, 900);
+}
+
 const getResult = () =>
 {
     result.classList.remove('active');
@@ -99,6 +123,7 @@ const getResult = () =>
         result.style.background = 'green';
         playerPoints++;
         playerScores.innerHTML = playerPoints;
+        givePointToPlayer();
         break;
         case 'scissorsrock':
         case 'rockpaper':
@@ -107,6 +132,7 @@ const getResult = () =>
         result.style.background = 'red';
         computerPoints++;
         computerScores.innerHTML = computerPoints;
+        givePointToComputer();
         break;
         case 'rockrock':
         case 'paperpaper':
